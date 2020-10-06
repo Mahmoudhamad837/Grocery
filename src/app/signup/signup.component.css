@@ -1,0 +1,18 @@
+.container{
+    width: 350px;
+    padding: 10px 30px;
+    margin:7% auto;
+    border-radius: 10px;
+    background-color:aliceblue ;
+    box-shadow:10px 10px 3px #ccc;
+}
+span{
+    margin-top:25px;
+}
+a{
+    text-decoration: none;
+    color:#00b5b8;
+}
+p{
+    color:#999;
+}

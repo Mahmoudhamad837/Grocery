@@ -1,0 +1,73 @@
+<!-- <form>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+  
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>  -->
+
+<div class="container">
+    <form>
+        <h2 class="text-center">Login</h2>
+        <div class="form-group">
+            <div class="p-inputgroup">
+              <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+              <input
+                type="text"
+                pInputText
+                placeholder="Username"
+                required
+                name="username"
+                [(ngModel)]="username"/>         
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <input
+              class="form-control"
+              pInputText
+              required
+              id="password" 
+              type="password" 
+              name="password" 
+              placeholder="Password" 
+              [(ngModel)]="password"/>
+          </div>
+        </div>
+
+        <button
+          pButton
+          class="form-control"
+          icon="pi pi-lock-open"
+          type="button"
+          label="Login"
+          ></button>
+
+        <hr/>
+        <div class="form-group buttons">
+          <a class="float-left" routerLink="/recover" styleClass="p-button-link">Forgot Password?</a>
+          <button
+            pButton
+            class="float-right"
+            icon="pi pi-user-plus"
+            iconPos="left"
+            label="SignUp"
+            (click)="signUp()"
+            ></button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+.container{
+  width: 350px;
+  height: 330px;
+  margin: 10% auto;
+  padding: 10px 30px;
+  border-radius: 10px;
+  background-color:aliceblue ;
+  box-shadow:10px 10px 3px #ccc;
+}
+
+.buttons{
+  margin-top: 15px;;
+}
+a{
+  cursor: pointer;
+  color: #00b5b8;
+}
+a:hover{
+  text-decoration: none;
+}
+hr{
+  margin:20px 0px;
+}
+button{
+  background:#00b5b8;
+  color:#fff;
+}

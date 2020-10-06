@@ -1,0 +1,170 @@
+<div class="container">
+    <button
+        pButton
+        icon="pi pi-backward"
+        class="p-button-oulined p-button-text"
+        (click)="goBack()"
+    ></button>
+    <h2 *ngIf="!id">New User</h2>
+    <h2 *ngIf="id>0">Edit User</h2>
+    <form #formData="ngForm" (ngSubmit)="save(formData)">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                        pInputText 
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="form-control"
+                        [(ngModel)]="user.name"
+                        required
+                        #name="ngModel"
+                        placeholder="Enter Name"
+                    />
+                    <small
+                        *ngIf="!name.valid && name.touched && name.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input
+                        pInputText 
+                        type="text"
+                        name="username"
+                        id="username"
+                        class="form-control"
+                        [(ngModel)]="user.userName"
+                        required
+                        #userName="ngModel"
+                        placeholder="Enter User Name"
+                    />
+                    <small
+                        *ngIf="!userName.valid && userName.touched && userName.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        pInputText 
+                        type="email"
+                        name="email"
+                        id="email"
+                        class="form-control"
+                        [(ngModel)]="user.email"
+                        required
+                        email
+                        #email="ngModel"
+                        placeholder="Enter Email Address"
+                    />
+                    <small
+                        *ngIf="!email.valid && email.touched && email.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        pInputText
+                        type="tel"
+                        class="form-control"
+                        name="phone"
+                        id="phone"
+                        [(ngModel)]="user.phoneNumber"
+                        placeholder="ex:01115214783"
+                        required
+                        #phone="ngModel"
+                    />
+                    <small
+                        *ngIf="!phone.valid && phone.touched && phone.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        pPassword
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        [(ngModel)]="user.password"
+                        placeholder="Enter Password"
+                        required
+                        #password="ngModel"
+                    />
+                    <small
+                        *ngIf="!password.valid && password.touched && password.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <br/>
+                    <p-dropdown 
+                        [options]="roles"
+                        [(ngModel)]="user.role"
+                        name="role"
+                        placeholder="Select Role"
+                        optionLabel="roleName"
+                        [showClear]="true"
+                        #role="ngModel"
+                        required
+                        class="p-col"
+                        id="role"
+                    >
+                    </p-dropdown>
+                    <small
+                        *ngIf="!role.valid && role.touched && role.dirty">This field is Required</small>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <br/>
+                    <p-dropdown 
+                        [options]="statuses"
+                        [(ngModel)]="user.status"
+                        name="status"
+                        placeholder="Select Status"
+                        optionLabel="statusName"
+                        [showClear]="true"
+                        #status="ngModel"
+                        required
+                        class="p-col"
+                        id="status"
+                    >
+                    </p-dropdown>
+                    <small
+                        *ngIf="!status.valid && status.touched && status.dirty">This field is Required</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear-fix">
+            <button
+                type="submit"
+                pButton
+                label="Save"
+                icon="pi pi-check"
+                class="p-button-success p-button-outlined float-right p-ml-2"
+            ></button>
+            <button
+                type="button"
+                pButton
+                label="Clear"
+                (click)="formData.reset()"
+                class="p-button-danger float-right p-mr-2 p-button-outlined"
+            ></button>
+        </div>
+    </form>
+</div>

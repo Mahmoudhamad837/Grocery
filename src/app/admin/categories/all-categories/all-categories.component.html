@@ -1,0 +1,44 @@
+<div class="container">
+    <button 
+        pButton 
+        class="p-button-outlined p-m-2" 
+        label="Add" 
+        icon="pi pi-plus"
+        (click)="openNew()"></button>
+    <p-orderList 
+        [value]="categories" 
+        [listStyle]="{'height':'auto'}" 
+        header="List of Categories" 
+        filterBy="name" 
+        filterPlaceholder="Filter by name" 
+    >
+        <ng-template let-category pTemplate="item">
+            <div class="product-item">
+                <div class="image-container">
+                        <img src="../../../../assets/{{category.imagePath}}" [alt]="category.name" class="product-image" />
+                </div>
+                <div class="product-list-detail">
+                    <h5 class="p-mb-2">{{category.name}}</h5>
+                </div>
+                <div class="product-list-action">
+                    <button 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-pencil" 
+                        class=" p-button-rounded p-button-outlined p-button-help p-mr-2 p-mb-2" 
+                        (click)="openEdit(category.id)">
+                    </button>
+                    <button 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-times"
+                        class=" p-button-rounded p-button-outlined p-button-danger p-mr-2 p-mb-2" 
+                        (click)="deleteCategory(1)">
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </p-orderList>
+</div>

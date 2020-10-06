@@ -1,0 +1,149 @@
+<div class="container">
+    <button pButton icon="pi pi-backward" class="p-button-text p-button-info" (click)="goBack()"></button>
+    <h2 *ngIf="!id">New Product</h2>
+    <h2 *ngIf="id>0">Edit Product</h2>
+    <form #formData="ngForm" (ngSubmit)="save(formData)">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="name">Product Name</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        id="name"
+                        #productname="ngModel"
+                        required
+                        placeholder="Product Name"
+                        [(ngModel)]="product.name"
+                    />
+                    <small 
+                        *ngIf="!productname.valid && productname.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="code">Product Code</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="code"
+                        id="code"
+                        #productcode="ngModel"
+                        required
+                        placeholder="Product Code"
+                        [(ngModel)]="product.code"
+                    />
+                    <small 
+                        *ngIf="!productcode.valid && productcode.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="category">Product Category</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="category"
+                        id="category"
+                        #productcategory="ngModel"
+                        required
+                        placeholder="Product Category"
+                        [(ngModel)]="product.category"
+                    />
+                    <small 
+                        *ngIf="!productcategory.valid && productcategory.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="quantity">Product Quantity</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="quantity"
+                        id="quantity"
+                        #productquantity="ngModel"
+                        required
+                        placeholder="Product Quantity"
+                        [(ngModel)]="product.quantity"
+                    />
+                    <small 
+                        *ngIf="!productquantity.valid && productquantity.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="desc">Product Description</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="desc"
+                        id="desc"
+                        #productdescription="ngModel"
+                        required
+                        placeholder="Product Description"
+                        [(ngModel)]="product.description"
+                    />
+                    <small 
+                        *ngIf="!productdescription.valid && productdescription.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="image">Product Image</label>
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="image"
+                        id="image"
+                        #productimage="ngModel"
+                        required
+                        placeholder="Product Image"
+                        [(ngModel)]="product.image"
+                    />
+                    <small 
+                        *ngIf="!productimage.valid && productimage.dirty"
+                        style="color:red"
+                    >
+                        This Field is Required
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="clear-fix">
+            <button
+                pButton 
+                class="p-button-success p-mr-2 p-mb-2 p-button-outlined float-right" 
+                type="submit"
+                label="Save"></button>
+        
+            <button
+                pButton 
+                class="p-button-danger p-mr-2 p-mb-2 p-button-outlined float-right" 
+                type="button" 
+                (click)="formData.reset()"
+                label="Clear"></button>
+        </div>
+    </form>
+</div>

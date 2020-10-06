@@ -1,0 +1,79 @@
+<p-toast></p-toast>
+<div class="container">
+    <button 
+        label="New"
+        pButton 
+        icon="pi pi-plus" 
+        iconPos="left" 
+        (click)="openNew()"
+        class="new p-button-outlined"></button>
+    <p-table 
+        [columns]="cols"
+        [value]="products"
+        #dt
+        styleClass="ui-table-loading p-datatable-striped"
+        selectionMode="single"
+        [(selection)]="selectedProduct"
+        dataKey="code"
+        [paginator]="true"
+        [rows]="10"
+        sortMode="multiple"
+        [rowsPerPageOptions]="[10,25,50]"
+        [showCurrentPageReport]="true"
+        (onRowSelect)="onRowSelect($event)" 
+        (onRowUnselect)="onRowUnselect($event)">
+
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input 
+                        pInputText
+                        type="text"
+                        (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Product Search"
+                    />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th 
+                    *ngFor="let col of columns"
+                    [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+                <td>
+                    <button 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-pencil" 
+                        class=" p-button-rounded p-button-outlined p-button-help p-mr-2 p-mb-2" 
+                        (click)="openEdit(rowData.code)">
+                    </button>
+                    <button 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-times"
+                        class=" p-button-rounded p-button-outlined p-button-danger p-mr-2 p-mb-2" 
+                        (click)="deleteProduct(1)">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
