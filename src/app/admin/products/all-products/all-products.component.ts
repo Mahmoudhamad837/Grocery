@@ -29,7 +29,7 @@ export class AllProductsComponent implements OnInit {
       { field: 'name', header: 'Name' },
       { field: 'category', header: 'Category' },
       { field: 'quantity', header: 'Quantity' }
-  ];
+    ];
   }
 
   onRowSelect(event) {

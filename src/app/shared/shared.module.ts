@@ -12,6 +12,7 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {DialogModule} from 'primeng/dialog';
+import {CalendarModule} from 'primeng/calendar';
 
 
 
@@ -28,7 +29,8 @@ const Modules = [
   SplitButtonModule,
   TableModule,
   ToastModule,
-  DialogModule
+  DialogModule,
+  CalendarModule
 ];
 
 @NgModule({

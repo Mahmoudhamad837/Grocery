@@ -1,1 +1,126 @@
-<p>copouns works!</p>
+<div class="container">
+    <button 
+        pButton 
+        pRipple 
+        type="button" 
+        icon="pi pi-plus" 
+        class=" p-button-rounded p-button-outlined p-button-help p-mr-2 p-mb-2" 
+        (click)="AddCopoun()">
+    </button>
+    <p-table 
+        [columns]="cols"
+        [value]="copouns"
+        #dt
+        styleClass="ui-table-loading p-datatable-striped"
+        selectionMode="single"
+        [(selection)]="selectedCopoun"
+        dataKey="code"
+        [paginator]="true"
+        [rows]="10"
+        sortMode="multiple"
+        [rowsPerPageOptions]="[10,25,50]"
+        [showCurrentPageReport]="true">
+
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input 
+                        pInputText
+                        type="text"
+                        (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Product Search"
+                    />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th 
+                    *ngFor="let col of columns"
+                    [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+                <td>
+                    <button 
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-times"
+                        class=" p-button-rounded p-button-outlined p-button-danger p-mr-2 p-mb-2" 
+                        (click)="deleteProduct(1)">
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog 
+        header="Create Copoun"
+        [(visible)]="displayModal"
+        [modal]="true"
+        [style]="{width: '50vw'}"
+        [baseZIndex]="100"
+        [draggable]="false"
+        [resizable]="false">
+        <form #formData="ngForm" (ngSubmit)="save(formData)">
+            <div class="row p-fluid p-grid p-formgrid">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Copoun Name</label>
+                        <input 
+                            type="text" 
+                            name="copounName"
+                            id="name"
+                            class="form-control"
+                        >
+                    </div>
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">                      
+                    <label for="basic">Start Date</label>
+                    <p-calendar inputId="basic" [(ngModel)]="date1" name="startDate"></p-calendar>                        
+                </div>
+
+                <div class="p-field p-col-12 p-md-6">                      
+                    <label for="basic1">End Date</label>
+                    <p-calendar 
+                        inputId="basic1" 
+                        [(ngModel)]="date2" 
+                        name="endDate"
+                        ></p-calendar>                        
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="discount">Discount</label>
+                        <input 
+                            type="number" 
+                            name="discount"
+                            id="discount"
+                            class="form-control"
+                        >
+                    </div>
+                </div>
+            </div>
+            <button type="submit" pButton label="Save"></button>
+        </form>
+        
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" (click)="displayModal=false" label="Yes" class="p-button-text"></p-button>
+            <p-button icon="pi pi-times" (click)="displayModal=false" label="No"></p-button>
+        </ng-template>
+    </p-dialog>
+</div>
